@@ -15,6 +15,7 @@
          
             
           <li class="nav-item">
+            
             <a class="nav-link" *ngIf="auth.isAuthenticated$ | async" [routerLinkActive]="['active']" [routerLink]="['protegida']">Protegida</a>
           </li>
         </ul>
@@ -25,9 +26,9 @@
 
           </ng-template>
          
-            <button *ngIf="auth.isAuthenticated$ | async; else loggedOut"
+            <button class="btn btn-outline-danger" *ngIf="auth.isAuthenticated$ | async; else loggedOut"
               (click)="auth.logout({ returnTo: document.location.origin })">
-              Log out
+              Salir
             </button>
 
 
