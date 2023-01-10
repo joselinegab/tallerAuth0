@@ -3,8 +3,11 @@
 
 <!--PRE PARA PONER PORCIÓN DE CÓDIGO-->
 <!--si hay un usuario loggeado que aparezcan sus datos-->
-<h1>Bienvenido Joshy</h1>
+<h1 *ngIf="auth.user$ | async as name">Bienvenido: {{name.name}} </h1>
+<hr>
 <pre *ngIf="auth.user$ | async as profile" >
     <code>{{profile | json }}</code>
-
+    <code>
+        
+    </code>
 </pre>
