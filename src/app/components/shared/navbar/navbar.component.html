@@ -15,12 +15,25 @@
          
             
           <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['protegida']">Protegida</a>
+            <a class="nav-link" *ngIf="auth.isAuthenticated$ | async" [routerLinkActive]="['active']" [routerLink]="['protegida']">Protegida</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <button class="btn btn-outline-success" type="submit">Ingresar</button>
+          <ng-template #loggedOut>
+            <button (click)="auth.loginWithRedirect()" class="btn btn-outline-success" type="submit">Ingresar</button>
+
+
+          </ng-template>
+         
+            <button *ngIf="auth.isAuthenticated$ | async; else loggedOut"
+              (click)="auth.logout({ returnTo: document.location.origin })">
+              Log out
+            </button>
+
+
+         
         </form>
+
       </div>
     </div>
   </nav>
