@@ -8,9 +8,13 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class ProtegidaComponent implements OnInit {
 
+  public usuario:any;
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
+    this.auth.user$.subscribe(perfil =>{
+      this.usuario=perfil;
+    })
   }
 
 }
